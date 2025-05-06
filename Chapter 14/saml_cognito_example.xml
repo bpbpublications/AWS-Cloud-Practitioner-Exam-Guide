@@ -1,0 +1,40 @@
+<saml:Assertion xmlns:saml="urn:oasis:names:tc:SAML:2.0:assertion"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    ID="_abc12345" IssueInstant="2024-12-24T12:00:00Z" Version="2.0">
+    <saml:Issuer>https://idp.example.com/</saml:Issuer>
+    <saml:Subject>
+        <saml:NameID Format="urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress">
+            user@example.com
+        </saml:NameID>
+        <saml:SubjectConfirmation Method="urn:oasis:names:tc:SAML:2.0:cm:bearer"/>
+    </saml:Subject>
+    <saml:Conditions NotBefore="2024-12-24T11:59:00Z" NotOnOrAfter="2024-12-24T13:00:00Z">
+        <saml:AudienceRestriction>
+            <saml:Audience>urn:amazon:cognito:sp</saml:Audience>
+        </saml:AudienceRestriction>
+    </saml:Conditions>
+    <saml:AttributeStatement>
+        <!-- Role Attribute -->
+        <saml:Attribute Name="https://aws.amazon.com/SAML/Attributes/Role">
+            <saml:AttributeValue>arn:aws:iam::123456789012:role/CognitoRole,arn:aws:iam::123456789012:saml-provider/ExampleIdP</saml:AttributeValue>
+        </saml:Attribute>
+        
+        <!-- Group Attribute -->
+        <saml:Attribute Name="https://aws.amazon.com/SAML/Attributes/RoleSessionName">
+            <saml:AttributeValue>user@example.com</saml:AttributeValue>
+        </saml:Attribute>
+        
+        <!-- Groups Attribute -->
+        <saml:Attribute Name="http://schemas.xmlsoap.org/claims/Group">
+            <saml:AttributeValue>AdminGroup</saml:AttributeValue>
+            <saml:AttributeValue>DeveloperGroup</saml:AttributeValue>
+        </saml:Attribute>
+    </saml:AttributeStatement>
+    <saml:AuthnStatement AuthnInstant="2024-12-24T12:00:00Z" SessionIndex="_session123">
+        <saml:AuthnContext>
+            <saml:AuthnContextClassRef>
+                urn:oasis:names:tc:SAML:2.0:ac:classes:PasswordProtectedTransport
+            </saml:AuthnContextClassRef>
+        </saml:AuthnContext>
+    </saml:AuthnStatement>
+</saml:Assertion>

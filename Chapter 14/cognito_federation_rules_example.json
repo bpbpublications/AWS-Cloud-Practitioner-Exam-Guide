@@ -1,0 +1,24 @@
+{
+  "RulesConfiguration": {
+    "Rules": [
+      {
+        "Claim": "email",
+        "MatchType": "Equals",
+        "Value": "*",
+        "RoleARN": "arn:aws:iam::123456789012:role/CognitoUser",
+        "RoleSessionName": "CognitoSession"
+      },
+      {
+        "Claim": "role",
+        "MatchType": "Contains",
+        "Value": "Admin",
+        "RoleARN": "arn:aws:iam::123456789012:role/CognitoAdmin",
+        "RoleSessionName": "CognitoAdminSession"
+      }
+    ]
+  },
+  "AttributeMapping": {
+    "email": "email",
+    "custom:role": "role"
+  }
+}

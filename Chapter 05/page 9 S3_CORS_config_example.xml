@@ -1,0 +1,7 @@
+<CORSConfiguration>
+ <CORSRule>
+ <AllowedOrigin>https://your-frontend-domain.com</AllowedOrigin>
+ <AllowedMethod>GET</AllowedMethod>
+ <AllowedHeader>*</AllowedHeader>
+ </CORSRule>
+</CORSConfiguration>
